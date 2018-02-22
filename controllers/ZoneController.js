@@ -5,7 +5,7 @@ module.exports = {
   find: function(params, callback) {
     Zone.find(params, function(err, zones) {
       if (err) {
-        callback(err, nul)
+        callback(err, null)
         return
       }
 
