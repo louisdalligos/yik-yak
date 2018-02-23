@@ -18331,17 +18331,25 @@ var Zones = function (_Component) {
   function Zones() {
     _classCallCheck(this, Zones);
 
-    return _possibleConstructorReturn(this, (Zones.__proto__ || Object.getPrototypeOf(Zones)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Zones.__proto__ || Object.getPrototypeOf(Zones)).call(this));
+
+    _this.state = {
+      list: [{ name: 'Zone 1', zipCode: '10012', numComments: 8 }, { name: 'Zone 2', zipCode: '10013', numComments: 99 }, { name: 'Zone 3', zipCode: '10014', numComments: 44 }, { name: 'Zone 4', zipCode: '10015', numComments: 24 }, { name: 'Zone 5', zipCode: '10016', numComments: 34 }]
+    };
+    return _this;
   }
 
   _createClass(Zones, [{
     key: 'render',
     value: function render() {
 
-      var firstZone = { name: 'Zone 1', zipCode: '10012', numComments: 8 };
-      var secondZone = { name: 'Zone 2', zipCode: '10013', numComments: 99 };
-      var thirdZone = { name: 'Zone 3', zipCode: '10014', numComments: 44 };
-      var fourthZone = { name: 'Zone 4', zipCode: '10015', numComments: 24 };
+      var listItems = this.state.list.map(function (zone, i) {
+        return _react2.default.createElement(
+          'li',
+          { key: i },
+          _react2.default.createElement(_Zone2.default, { currentZone: zone })
+        );
+      });
 
       return _react2.default.createElement(
         'div',
@@ -18349,26 +18357,7 @@ var Zones = function (_Component) {
         _react2.default.createElement(
           'ol',
           null,
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement(_Zone2.default, { currentZone: firstZone })
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement(_Zone2.default, { currentZone: secondZone })
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement(_Zone2.default, { currentZone: thirdZone })
-          ),
-          _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement(_Zone2.default, { currentZone: fourthZone })
-          )
+          listItems
         )
       );
     }
@@ -18414,31 +18403,31 @@ var Zone = function (_Component) {
   }
 
   _createClass(Zone, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        "div",
-        null,
+        'div',
+        { style: styles.container },
         _react2.default.createElement(
-          "h2",
-          null,
+          'h2',
+          { style: styles.zoneHeading },
           _react2.default.createElement(
-            "a",
-            { href: "#" },
+            'a',
+            { style: styles.zoneTitleLink, href: '#' },
             this.props.currentZone.name
           )
         ),
         _react2.default.createElement(
-          "span",
+          'span',
           null,
           this.props.currentZone.zipCode
         ),
-        _react2.default.createElement("br", null),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
-          "span",
+          'span',
           null,
           this.props.currentZone.numComments,
-          " comments"
+          ' comments'
         )
       );
     }
@@ -18446,6 +18435,23 @@ var Zone = function (_Component) {
 
   return Zone;
 }(_react.Component);
+
+var styles = {
+  container: {
+    padding: 15,
+    border: '1px solid #EEEEEE',
+    marginTop: 20
+  },
+
+  zoneHeading: {
+    margin: 0
+  },
+
+  zoneTitleLink: {
+    textDecoration: 'none',
+    color: '#222'
+  }
+};
 
 exports.default = Zone;
 
