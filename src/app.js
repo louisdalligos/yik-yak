@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 import Home from './components/Home'
+import Nav from './components/Nav'
 
 class App extends Component {
   render() {
     return (
       <div>
-        <h2>YikYak App</h2>
+        <Nav />
 
         <Home />
       </div>

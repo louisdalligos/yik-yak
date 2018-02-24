@@ -6,7 +6,7 @@ import Comments from './Comments'
 class Home extends Component {
   render() {
     return (
-      <div  className="container">
+      <div className="container mt-5">
         <div className="row">
           <div className="col-md-4">
             <Zones />

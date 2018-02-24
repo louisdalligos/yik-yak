@@ -24,8 +24,8 @@ class Comments extends Component {
 
     return(
       <div>
-        <h2>Comments: Zone 1</h2>
-        <ul>
+        <h3>Comments: Zone 1</h3>
+        <ul className="list-unstyled">
           { commentList }
         </ul>
       </div>
