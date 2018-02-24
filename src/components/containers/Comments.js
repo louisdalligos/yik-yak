@@ -8,6 +8,11 @@ class Comments extends Component {
     super()
 
     this.state = {
+      comment: {
+        username: '',
+        body: '',
+        timestamp: ''
+      },
       list: [
         { body: 'comment 1', username: 'johndoe', timestamp: '10:30' },
         { body: 'comment 2', username: 'janedow', timestamp: '12:39' },
@@ -18,17 +23,37 @@ class Comments extends Component {
 
   submitComment(e) {
     e.preventDefault();
+    console.log('Submit comment: ' + JSON.stringify(this.state.comment))
 
-    console.log('Submit comment')
+    let updatedList = Object.assign([], this.state.list)
+    updatedList.push(this.state.comment)
+
+    this.setState({
+      list: updatedList
+    })
   }
 
   updateUsername(e) {
-    console.log('Update username: ' + e.target.value)
+    //console.log('Update username: ' + e.target.value)
+
+    let updatedComment = Object.assign({}, this.state.comment)
+    updatedComment['username'] = e.target.value
+
+    this.setState({
+      comment: updatedComment
+    })
   }
 
 
-  updateComment(e) {
-    console.log('Update comment: ' + e.target.value)
+  updateBody(e) {
+    //console.log('Update comment: ' + e.target.value)
+
+    let updatedComment = Object.assign({}, this.state.comment)
+    updatedComment['body'] = e.target.value
+
+    this.setState({
+      comment: updatedComment
+    })
   }
 
   render() {
@@ -59,10 +84,12 @@ class Comments extends Component {
 
           <div className="form-group">
             <label>Enter comment</label>
-            <textarea onChange={this.updateComment.bind(this)} className="form-control" id="commentBody" rows="3" placeholder="Enter comment"></textarea>
+            <textarea onChange={this.updateBody.bind(this)} className="form-control" id="commentBody" rows="3" placeholder="Enter comment"></textarea>
           </div>
 
           <button onClick={this.submitComment.bind(this)} className="btn btn-primary">Submit</button>
+
+          <input type="hidden" name="timestamp" />
         </form>
       </div>
     )
