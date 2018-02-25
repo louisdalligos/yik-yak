@@ -20,7 +20,7 @@ class Zones extends Component {
   componentDidMount() {
     console.log('componentDidMount')
 
-    APIManager.get('api/zone', null, (err, response) => {
+    APIManager.get('/api/zone', null, (err, response) => {
       if (err) {
         alert('ERROR: ' + err.message)
         return
@@ -47,13 +47,24 @@ class Zones extends Component {
   addZone(e) {
     e.preventDefault()
 
-    console.log('Add Zone: ' + JSON.stringify(this.state.zone))
+    let updatedZone = Object.assign({}, this.state.zone)
+    updatedZone['zipCodes'] = updatedZone.zipCode.split(',')
 
-    let updatedList = Object.assign([], this.state.list)
-    updatedList.push(this.state.zone)
+    APIManager.post('/api/zone', updatedZone, (err, response) => {
+      
+      if (err) {
+        alert('ERROR: ' + err.message )
+        return
+      }
 
-    this.setState({
-      list: updatedList
+      console.log('ZONE CREATED', + JSON.stringify(response))
+
+      let updatedList = Object.assign([], this.state.list)
+      updatedList.push(response.result)
+
+      this.setState({
+        list: updatedList
+      })
     })
   }
 

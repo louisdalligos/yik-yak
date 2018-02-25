@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import Moment from 'react-moment'
-import 'moment-timezone'
-import superagent from 'superagent'
-
 import Comment from '../presentation/Comment'
 import styles from './styles'
+import { APIManager } from '../../utils'
 
 class Comments extends Component {
   constructor() {
@@ -22,22 +19,17 @@ class Comments extends Component {
 
   componentDidMount() {
 
-    superagent
-      .get('api/comment')
-      .query(null)
-      .set('Accept', 'application/json')
-      .end( (err, response) => {
-        if (err) {
-          alert('ERROR: ' + err)
-        }
+    APIManager.get('api/comment', null, (err, response) => {
+      if (err) {
+        alert('ERROR: ' + err.message)
+        return
+      }
+      //console.log('RESULTS: ' + response.results)
 
-        console.log(JSON.stringify(response.body))
-
-        let results = response.body.results
-        this.setState({
-          list: results
-        })
+      this.setState({
+        list: response.results
       })
+    })
   }
 
   submitComment(e) {
