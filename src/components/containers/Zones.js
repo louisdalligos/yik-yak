@@ -18,14 +18,12 @@ class Zones extends Component {
 
 
   componentDidMount() {
-    console.log('componentDidMount')
 
     APIManager.get('/api/zone', null, (err, response) => {
       if (err) {
         alert('ERROR: ' + err.message)
         return
       }
-      //console.log('RESULTS: ' + response.results)
 
       this.setState({
         list: response.results
@@ -50,6 +48,8 @@ class Zones extends Component {
     let updatedZone = Object.assign({}, this.state.zone)
     updatedZone['zipCodes'] = updatedZone.zipCode.split(',')
 
+    console.log(updatedZone)
+
     APIManager.post('/api/zone', updatedZone, (err, response) => {
       
       if (err) {
@@ -57,7 +57,7 @@ class Zones extends Component {
         return
       }
 
-      console.log('ZONE CREATED', + JSON.stringify(response))
+      console.log('ZONE CREATED: ', + JSON.stringify(response))
 
       let updatedList = Object.assign([], this.state.list)
       updatedList.push(response.result)

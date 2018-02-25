@@ -18491,14 +18491,11 @@ var Zones = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      console.log('componentDidMount');
-
       _utils.APIManager.get('/api/zone', null, function (err, response) {
         if (err) {
           alert('ERROR: ' + err.message);
           return;
         }
-        //console.log('RESULTS: ' + response.results)
 
         _this2.setState({
           list: response.results
@@ -18527,6 +18524,8 @@ var Zones = function (_Component) {
       var updatedZone = Object.assign({}, this.state.zone);
       updatedZone['zipCodes'] = updatedZone.zipCode.split(',');
 
+      console.log(updatedZone);
+
       _utils.APIManager.post('/api/zone', updatedZone, function (err, response) {
 
         if (err) {
@@ -18534,7 +18533,7 @@ var Zones = function (_Component) {
           return;
         }
 
-        console.log('ZONE CREATED', +JSON.stringify(response));
+        console.log('ZONE CREATED: ', +JSON.stringify(response));
 
         var updatedList = Object.assign([], _this3.state.list);
         updatedList.push(response.result);
@@ -18728,7 +18727,6 @@ exports.default = {
 
   get: function get(url, params, callback) {
     _superagent2.default.get(url).query(params).set('Accept', 'application/json').end(function (err, response) {
-
       // test HTTP request
       if (err) {
         callback(err, null);
@@ -18748,11 +18746,11 @@ exports.default = {
 
   post: function post(url, body, callback) {
     _superagent2.default.post(url).send(body).set('Accept', 'application/json').end(function (err, response) {
-
       // test HTTTP request
       if (err) {
         callback(err, null);
         alert('ERROR: ' + err);
+        return;
       }
 
       // test our API request
@@ -20886,35 +20884,39 @@ var Comments = function (_Component) {
   }, {
     key: 'submitComment',
     value: function submitComment(e) {
+      var _this3 = this;
+
       e.preventDefault();
       console.log('Submit comment: ' + JSON.stringify(this.state.comment));
 
-      var updatedList = Object.assign([], this.state.list);
-      updatedList.push(this.state.comment);
+      var updatedComment = Object.assign({}, this.state.comment);
 
-      this.setState({
-        list: updatedList
+      console.log(updatedComment);
+
+      _utils.APIManager.post('/api/comment', updatedComment, function (err, response) {
+
+        if (err) {
+          alert('ERROR: ' + err);
+          return;
+        }
+
+        console.log('COMMENT CREATED: ', +JSON.stringify(response));
+
+        var updatedList = Object.assign([], _this3.state.list);
+        updatedList.push(response.result);
+
+        _this3.setState({
+          list: updatedList
+        });
       });
     }
   }, {
-    key: 'updateUsername',
-    value: function updateUsername(e) {
-      //console.log('Update username: ' + e.target.value)
+    key: 'updateComment',
+    value: function updateComment(e) {
+      console.log('Update zone: ' + e.target.name + ' == ' + e.target.value);
 
       var updatedComment = Object.assign({}, this.state.comment);
-      updatedComment['username'] = e.target.value;
-
-      this.setState({
-        comment: updatedComment
-      });
-    }
-  }, {
-    key: 'updateBody',
-    value: function updateBody(e) {
-      //console.log('Update comment: ' + e.target.value)
-
-      var updatedComment = Object.assign({}, this.state.comment);
-      updatedComment['body'] = e.target.value;
+      updatedComment[e.target.name] = e.target.value;
 
       this.setState({
         comment: updatedComment
@@ -20963,7 +20965,7 @@ var Comments = function (_Component) {
               null,
               'Username'
             ),
-            _react2.default.createElement('input', { onChange: this.updateUsername.bind(this), type: 'text', className: 'form-control', id: 'userName', placeholder: 'Enter username' })
+            _react2.default.createElement('input', { onChange: this.updateComment.bind(this), type: 'text', className: 'form-control', name: 'username', placeholder: 'Enter username' })
           ),
           _react2.default.createElement(
             'div',
@@ -20973,7 +20975,7 @@ var Comments = function (_Component) {
               null,
               'Enter comment'
             ),
-            _react2.default.createElement('textarea', { onChange: this.updateBody.bind(this), className: 'form-control', id: 'commentBody', rows: '3', placeholder: 'Enter comment' })
+            _react2.default.createElement('textarea', { onChange: this.updateComment.bind(this), className: 'form-control', name: 'body', rows: '3', placeholder: 'Enter comment' })
           ),
           _react2.default.createElement(
             'button',

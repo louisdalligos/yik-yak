@@ -36,31 +36,33 @@ class Comments extends Component {
     e.preventDefault();
     console.log('Submit comment: ' + JSON.stringify(this.state.comment))
 
-    let updatedList = Object.assign([], this.state.list)
-    updatedList.push(this.state.comment)
+    let updatedComment = Object.assign({}, this.state.comment)
 
-    this.setState({
-      list: updatedList
+    console.log(updatedComment)
+
+    APIManager.post('/api/comment', updatedComment, (err, response) => {
+
+      if (err) {
+        alert('ERROR: ' + err)
+        return
+      }
+
+      console.log('COMMENT CREATED: ', + JSON.stringify(response))
+
+      let updatedList = Object.assign([], this.state.list)
+      updatedList.push(response.result)
+
+      this.setState({
+        list: updatedList
+      })
     })
   }
 
-  updateUsername(e) {
-    //console.log('Update username: ' + e.target.value)
+  updateComment(e) {
+    console.log('Update zone: ' + e.target.name + ' == ' + e.target.value )
 
     let updatedComment = Object.assign({}, this.state.comment)
-    updatedComment['username'] = e.target.value
-
-    this.setState({
-      comment: updatedComment
-    })
-  }
-
-
-  updateBody(e) {
-    //console.log('Update comment: ' + e.target.value)
-
-    let updatedComment = Object.assign({}, this.state.comment)
-    updatedComment['body'] = e.target.value
+    updatedComment[e.target.name] = e.target.value
 
     this.setState({
       comment: updatedComment
@@ -90,12 +92,12 @@ class Comments extends Component {
 
           <div className="form-group">
             <label>Username</label>
-            <input onChange={this.updateUsername.bind(this)} type="text" className="form-control" id="userName" placeholder="Enter username" />
+            <input onChange={this.updateComment.bind(this)} type="text" className="form-control" name="username" placeholder="Enter username" />
           </div>
 
           <div className="form-group">
             <label>Enter comment</label>
-            <textarea onChange={this.updateBody.bind(this)} className="form-control" id="commentBody" rows="3" placeholder="Enter comment"></textarea>
+            <textarea onChange={this.updateComment.bind(this)} className="form-control" name="body" rows="3" placeholder="Enter comment"></textarea>
           </div>
 
           <button onClick={this.submitComment.bind(this)} className="btn btn-primary">Submit</button>
