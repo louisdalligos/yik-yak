@@ -8,9 +8,9 @@ class Zone extends Component {
 
     return(
       <div style={zoneStyle.container}>
-        <h2 style={zoneStyle.zoneHeading}>
+        <h3 style={zoneStyle.zoneHeading}>
           <a style={zoneStyle.zoneTitleLink} href="#">{this.props.currentZone.name}</a>
-        </h2>
+        </h3>
         <span>{this.props.currentZone.zipCode}</span><br />
         <span>{this.props.currentZone.numComments} comments</span>
       </div>

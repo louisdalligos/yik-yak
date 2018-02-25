@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Moment from 'react-moment'
+import 'moment-timezone'
 
 import Comment from '../presentation/Comment'
 import styles from './styles'
