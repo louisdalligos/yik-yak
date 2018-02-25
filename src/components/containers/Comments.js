@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import superagent from 'superagent'
 import Moment from 'react-moment'
 import 'moment-timezone'
+import superagent from 'superagent'
 
 import Comment from '../presentation/Comment'
 import styles from './styles'
