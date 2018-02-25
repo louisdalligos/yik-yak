@@ -31,7 +31,7 @@ class Zones extends Component {
             alert('ERROR: ' + err)
           }
 
-          console.log(JSON.stringify(response.body))
+          //console.log(JSON.stringify(response.body))
 
           let results = response.body.results
           this.setState({

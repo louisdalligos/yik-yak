@@ -34684,7 +34684,7 @@ var Zones = function (_Component) {
           alert('ERROR: ' + err);
         }
 
-        console.log(JSON.stringify(response.body));
+        //console.log(JSON.stringify(response.body))
 
         var results = response.body.results;
         _this2.setState({
@@ -36855,6 +36855,7 @@ var Zone = function (_Component) {
     key: 'render',
     value: function render() {
       var zoneStyle = _styles2.default.zone;
+      var zipcode = this.props.currentZone.zipCodes[0];
 
       return _react2.default.createElement(
         'div',
@@ -36871,7 +36872,7 @@ var Zone = function (_Component) {
         _react2.default.createElement(
           'span',
           null,
-          this.props.currentZone.zipCode
+          zipcode
         ),
         _react2.default.createElement('br', null),
         _react2.default.createElement(
@@ -36938,6 +36939,10 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _superagent = __webpack_require__(151);
+
+var _superagent2 = _interopRequireDefault(_superagent);
+
 var _reactMoment = __webpack_require__(160);
 
 var _reactMoment2 = _interopRequireDefault(_reactMoment);
@@ -36974,12 +36979,30 @@ var Comments = function (_Component) {
         body: '',
         timestamp: ''
       },
-      list: [{ body: 'comment 1', username: 'johndoe', timestamp: '10:30' }, { body: 'comment 2', username: 'janedow', timestamp: '12:39' }, { body: 'comment 3', username: 'mcollins', timestamp: '1:48' }]
+      list: []
     };
     return _this;
   }
 
   _createClass(Comments, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      _superagent2.default.get('api/comment').query(null).set('Accept', 'application/json').end(function (err, response) {
+        if (err) {
+          alert('ERROR: ' + err);
+        }
+
+        console.log(JSON.stringify(response.body));
+
+        var results = response.body.results;
+        _this2.setState({
+          list: results
+        });
+      });
+    }
+  }, {
     key: 'submitComment',
     value: function submitComment(e) {
       e.preventDefault();

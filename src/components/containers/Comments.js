@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import superagent from 'superagent'
 import Moment from 'react-moment'
 import 'moment-timezone'
 
@@ -15,12 +16,28 @@ class Comments extends Component {
         body: '',
         timestamp: ''
       },
-      list: [
-        { body: 'comment 1', username: 'johndoe', timestamp: '10:30' },
-        { body: 'comment 2', username: 'janedow', timestamp: '12:39' },
-        { body: 'comment 3', username: 'mcollins', timestamp: '1:48' }
-      ]
+      list: []
     }
+  }
+
+  componentDidMount() {
+
+    superagent
+      .get('api/comment')
+      .query(null)
+      .set('Accept', 'application/json')
+      .end( (err, response) => {
+        if (err) {
+          alert('ERROR: ' + err)
+        }
+
+        console.log(JSON.stringify(response.body))
+
+        let results = response.body.results
+        this.setState({
+          list: results
+        })
+      })
   }
 
   submitComment(e) {
