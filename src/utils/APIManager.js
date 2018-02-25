@@ -8,7 +8,6 @@ export default {
       .query(params)
       .set('Accept', 'application/json')
       .end( (err, response) => {
-
         // test HTTP request
         if (err) {
           callback(err, null)
@@ -32,11 +31,11 @@ export default {
       .send(body)
       .set('Accept', 'application/json')
       .end( (err, response) => {
-
         // test HTTTP request
         if (err) {
           callback(err, null)
           alert('ERROR: ' + err)
+          return
         }
 
         // test our API request
