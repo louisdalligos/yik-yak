@@ -4,7 +4,7 @@ import styles from './styles'
 class CommentForm extends Component {
   constructor() {
     super()
-    
+
     this.state = {
       comment: {
         username: '',
@@ -14,8 +14,6 @@ class CommentForm extends Component {
   }
 
   updateComment(e) {
-    console.log('Update zone: ' + e.target.name + ' == ' + e.target.value )
-
     let updatedComment = Object.assign({}, this.state.comment)
     updatedComment[e.target.name] = e.target.value
 

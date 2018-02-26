@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Zone, AddZoneForm } from '../presentation/'
+import { Zone, AddZoneForm } from '../presentation'
 import { APIManager } from '../../utils'
 
 class Zones extends Component {
@@ -7,10 +7,7 @@ class Zones extends Component {
     super()
 
     this.state = {
-      zone: {
-        name: '',
-        zipCode: ''
-      },
+      selected: 0,
       list: []
     }
   }
@@ -30,22 +27,12 @@ class Zones extends Component {
     })
   }
 
-  updateZone(e) {
-    console.log('Update zone: ' + e.target.name + ' == ' + e.target.value )
+  processAddZone(zone) {
 
-    let updatedZone = Object.assign({}, this.state.zone)
-    updatedZone[e.target.name] = e.target.value
-
-    this.setState({
-      zone: updatedZone
-    })
-  }
-
-  addZone(e) {
-    e.preventDefault()
+    console.log('ProcessZone')
 
     // pre-process our zone before sending to server
-    let updatedZone = Object.assign({}, this.state.zone)
+    let updatedZone = Object.assign({}, zone)
     updatedZone['zipCodes'] = updatedZone.zipCode.split(',')
 
     console.log(updatedZone)
@@ -57,8 +44,6 @@ class Zones extends Component {
         return
       }
 
-      console.log('ZONE CREATED: ', + JSON.stringify(response))
-
       let updatedList = Object.assign([], this.state.list)
       updatedList.push(response.result)
 
@@ -68,10 +53,22 @@ class Zones extends Component {
     })
   }
 
+  selectZone(index) {
+    console.log('selectZone: ' + index)
+
+    this.setState({
+      selected: index
+    })
+  }
+
   render() {
     const listItems = this.state.list.map( (zone, i) => {
+      let selected = (i===this.state.selected)
+
       return (
-        <li key={i}><Zone currentZone={ zone } /></li>
+        <li key={i}>
+          <Zone index={i} select={this.selectZone.bind(this)} isSelected={ selected } currentZone={ zone } />
+        </li>
       )
     })
 
@@ -81,7 +78,7 @@ class Zones extends Component {
           { listItems }
         </ul>
 
-        <AddZoneForm />
+        <AddZoneForm onAddZone={this.processAddZone.bind(this)} />
       </div>
     )
   }

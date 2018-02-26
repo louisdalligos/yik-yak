@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Comment, CommentForm } from '../presentation/'
+import { Comment, CommentForm } from '../presentation'
 import { APIManager } from '../../utils'
 
 class Comments extends Component {

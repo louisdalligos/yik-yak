@@ -593,7 +593,7 @@ exports.default = {
 
     zoneTitleLink: {
       textDecoration: 'none',
-      color: '#222'
+      color: 'red'
     }
   }
 };
@@ -18524,10 +18524,7 @@ var Zones = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Zones.__proto__ || Object.getPrototypeOf(Zones)).call(this));
 
     _this.state = {
-      zone: {
-        name: '',
-        zipCode: ''
-      },
+      selected: 0,
       list: []
     };
     return _this;
@@ -18550,26 +18547,14 @@ var Zones = function (_Component) {
       });
     }
   }, {
-    key: 'updateZone',
-    value: function updateZone(e) {
-      console.log('Update zone: ' + e.target.name + ' == ' + e.target.value);
-
-      var updatedZone = Object.assign({}, this.state.zone);
-      updatedZone[e.target.name] = e.target.value;
-
-      this.setState({
-        zone: updatedZone
-      });
-    }
-  }, {
-    key: 'addZone',
-    value: function addZone(e) {
+    key: 'processAddZone',
+    value: function processAddZone(zone) {
       var _this3 = this;
 
-      e.preventDefault();
+      console.log('ProcessZone');
 
       // pre-process our zone before sending to server
-      var updatedZone = Object.assign({}, this.state.zone);
+      var updatedZone = Object.assign({}, zone);
       updatedZone['zipCodes'] = updatedZone.zipCode.split(',');
 
       console.log(updatedZone);
@@ -18581,8 +18566,6 @@ var Zones = function (_Component) {
           return;
         }
 
-        console.log('ZONE CREATED: ', +JSON.stringify(response));
-
         var updatedList = Object.assign([], _this3.state.list);
         updatedList.push(response.result);
 
@@ -18592,13 +18575,26 @@ var Zones = function (_Component) {
       });
     }
   }, {
+    key: 'selectZone',
+    value: function selectZone(index) {
+      console.log('selectZone: ' + index);
+
+      this.setState({
+        selected: index
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this4 = this;
+
       var listItems = this.state.list.map(function (zone, i) {
+        var selected = i === _this4.state.selected;
+
         return _react2.default.createElement(
           'li',
           { key: i },
-          _react2.default.createElement(_presentation.Zone, { currentZone: zone })
+          _react2.default.createElement(_presentation.Zone, { index: i, select: _this4.selectZone.bind(_this4), isSelected: selected, currentZone: zone })
         );
       });
 
@@ -18610,7 +18606,7 @@ var Zones = function (_Component) {
           { className: 'list-unstyled' },
           listItems
         ),
-        _react2.default.createElement(_presentation.AddZoneForm, null)
+        _react2.default.createElement(_presentation.AddZoneForm, { onAddZone: this.processAddZone.bind(this) })
       );
     }
   }]);
@@ -18669,8 +18665,6 @@ var CommentForm = function (_Component) {
   _createClass(CommentForm, [{
     key: 'updateComment',
     value: function updateComment(e) {
-      console.log('Update zone: ' + e.target.name + ' == ' + e.target.value);
-
       var updatedComment = Object.assign({}, this.state.comment);
       updatedComment[e.target.name] = e.target.value;
 
@@ -18772,10 +18766,39 @@ var AddZoneForm = function (_Component) {
   function AddZoneForm() {
     _classCallCheck(this, AddZoneForm);
 
-    return _possibleConstructorReturn(this, (AddZoneForm.__proto__ || Object.getPrototypeOf(AddZoneForm)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (AddZoneForm.__proto__ || Object.getPrototypeOf(AddZoneForm)).call(this));
+
+    _this.state = {
+      zone: {
+        name: '',
+        zipCode: ''
+      }
+    };
+
+    return _this;
   }
 
   _createClass(AddZoneForm, [{
+    key: 'updateZone',
+    value: function updateZone(e) {
+      console.log('Update zone: ' + e.target.name + ' == ' + e.target.value);
+
+      var updatedZone = Object.assign({}, this.state.zone);
+      updatedZone[e.target.name] = e.target.value;
+
+      this.setState({
+        zone: updatedZone
+      });
+    }
+  }, {
+    key: 'addZone',
+    value: function addZone(e) {
+      e.preventDefault();
+
+      console.log('Add Zone: ' + JSON.stringify(this.state.zone));
+      this.props.onAddZone(this.state.zone);
+    }
+  }, {
     key: 'render',
     value: function render() {
       var formStyle = _styles2.default.form;
@@ -18794,16 +18817,16 @@ var AddZoneForm = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'form-group' },
-            _react2.default.createElement('input', { type: 'text', className: 'form-control form-control-sm', name: 'name', placeholder: 'Enter zone name' })
+            _react2.default.createElement('input', { onChange: this.updateZone.bind(this), type: 'text', className: 'form-control form-control-sm', name: 'name', placeholder: 'Enter zone name' })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group' },
-            _react2.default.createElement('input', { type: 'text', className: 'form-control form-control-sm', name: 'zipCode', placeholder: 'Enter zone zip code' })
+            _react2.default.createElement('input', { onChange: this.updateZone.bind(this), type: 'text', className: 'form-control form-control-sm', name: 'zipCode', placeholder: 'Enter zone zip code' })
           ),
           _react2.default.createElement(
             'button',
-            { className: 'btn btn-secondary btn-sm' },
+            { onClick: this.addZone.bind(this), className: 'btn btn-secondary btn-sm' },
             'Submit'
           )
         )
@@ -18937,22 +18960,35 @@ var Zone = function (_Component) {
   }
 
   _createClass(Zone, [{
+    key: 'onSelectTitle',
+    value: function onSelectTitle(e) {
+      e.preventDefault();
+      console.log('onSelectTitle: ' + this.props.index);
+
+      this.props.select(this.props.index);
+    }
+  }, {
     key: 'render',
     value: function render() {
       var zoneStyle = _styles2.default.zone;
       var zipcode = this.props.currentZone.zipCodes[0];
+      var title = this.props.isSelected ? _react2.default.createElement(
+        'a',
+        { style: zoneStyle.zoneTitleLink, href: '#' },
+        this.props.currentZone.name
+      ) : _react2.default.createElement(
+        'a',
+        { href: '#' },
+        this.props.currentZone.name
+      );
 
       return _react2.default.createElement(
         'div',
         { style: zoneStyle.container },
         _react2.default.createElement(
           'h3',
-          { style: zoneStyle.zoneHeading },
-          _react2.default.createElement(
-            'a',
-            { style: zoneStyle.zoneTitleLink, href: '#' },
-            this.props.currentZone.name
-          )
+          { onClick: this.onSelectTitle.bind(this), style: zoneStyle.zoneHeading },
+          title
         ),
         _react2.default.createElement(
           'span',

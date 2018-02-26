@@ -23,7 +23,7 @@ export default {
 
     zoneTitleLink: {
       textDecoration: 'none', 
-      color: '#222'
+      color: 'red'
     }
   }
 }
