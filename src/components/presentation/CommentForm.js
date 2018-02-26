@@ -4,6 +4,7 @@ import styles from './styles'
 class CommentForm extends Component {
   constructor() {
     super()
+    
     this.state = {
       comment: {
         username: '',
@@ -25,8 +26,9 @@ class CommentForm extends Component {
 
   submitComment(e) {
     e.preventDefault()
-    
-    console.log(JSON.stringify(this.state.comment))
+
+    console.log('Submit from view ' + JSON.stringify(this.state.comment))
+    this.props.onCreate(this.state.comment)
   }
 
   render() {

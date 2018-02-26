@@ -7,10 +7,6 @@ class Comments extends Component {
     super()
 
     this.state = {
-      comment: {
-        username: '',
-        body: ''
-      },
       list: []
     }
   }
@@ -30,11 +26,10 @@ class Comments extends Component {
     })
   }
 
-  submitComment(e) {
-    e.preventDefault();
-    console.log('Submit comment: ' + JSON.stringify(this.state.comment))
+  processComment(comment) {
+    console.log('Submit comment from container:' + JSON.stringify(comment))
 
-    APIManager.post('/api/comment', this.state.comment, (err, response) => {
+    APIManager.post('/api/comment', comment, (err, response) => {
 
       if (err) {
         alert('ERROR: ' + err)
@@ -52,16 +47,6 @@ class Comments extends Component {
     })
   }
 
-  updateComment(e) {
-    console.log('Update zone: ' + e.target.name + ' == ' + e.target.value )
-
-    let updatedComment = Object.assign({}, this.state.comment)
-    updatedComment[e.target.name] = e.target.value
-
-    this.setState({
-      comment: updatedComment
-    })
-  }
 
   render() {
     const commentList = this.state.list.map( (comment, i) => {
@@ -79,7 +64,7 @@ class Comments extends Component {
 
         <hr className="mt-5 mb-5" />
 
-        <CommentForm />
+        <CommentForm onCreate={this.processComment.bind(this)} />
       </div>
     )
   }

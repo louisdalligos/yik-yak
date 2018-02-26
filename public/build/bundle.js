@@ -18683,7 +18683,8 @@ var CommentForm = function (_Component) {
     value: function submitComment(e) {
       e.preventDefault();
 
-      console.log(JSON.stringify(this.state.comment));
+      console.log('Submit from view ' + JSON.stringify(this.state.comment));
+      this.props.onCreate(this.state.comment);
     }
   }, {
     key: 'render',
@@ -21116,10 +21117,6 @@ var Comments = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Comments.__proto__ || Object.getPrototypeOf(Comments)).call(this));
 
     _this.state = {
-      comment: {
-        username: '',
-        body: ''
-      },
       list: []
     };
     return _this;
@@ -21143,14 +21140,13 @@ var Comments = function (_Component) {
       });
     }
   }, {
-    key: 'submitComment',
-    value: function submitComment(e) {
+    key: 'processComment',
+    value: function processComment(comment) {
       var _this3 = this;
 
-      e.preventDefault();
-      console.log('Submit comment: ' + JSON.stringify(this.state.comment));
+      console.log('Submit comment from container:' + JSON.stringify(comment));
 
-      _utils.APIManager.post('/api/comment', this.state.comment, function (err, response) {
+      _utils.APIManager.post('/api/comment', comment, function (err, response) {
 
         if (err) {
           alert('ERROR: ' + err);
@@ -21165,18 +21161,6 @@ var Comments = function (_Component) {
         _this3.setState({
           list: updatedList
         });
-      });
-    }
-  }, {
-    key: 'updateComment',
-    value: function updateComment(e) {
-      console.log('Update zone: ' + e.target.name + ' == ' + e.target.value);
-
-      var updatedComment = Object.assign({}, this.state.comment);
-      updatedComment[e.target.name] = e.target.value;
-
-      this.setState({
-        comment: updatedComment
       });
     }
   }, {
@@ -21204,7 +21188,7 @@ var Comments = function (_Component) {
           commentList
         ),
         _react2.default.createElement('hr', { className: 'mt-5 mb-5' }),
-        _react2.default.createElement(_presentation.CommentForm, null)
+        _react2.default.createElement(_presentation.CommentForm, { onCreate: this.processComment.bind(this) })
       );
     }
   }]);
