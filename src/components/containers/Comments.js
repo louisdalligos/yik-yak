@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Comment from '../presentation/Comment'
-import styles from './styles'
+import { Comment, CommentForm } from '../presentation/'
 import { APIManager } from '../../utils'
 
 class Comments extends Component {
@@ -10,8 +9,7 @@ class Comments extends Component {
     this.state = {
       comment: {
         username: '',
-        body: '',
-        timestamp: ''
+        body: ''
       },
       list: []
     }
@@ -36,18 +34,14 @@ class Comments extends Component {
     e.preventDefault();
     console.log('Submit comment: ' + JSON.stringify(this.state.comment))
 
-    let updatedComment = Object.assign({}, this.state.comment)
-
-    console.log(updatedComment)
-
-    APIManager.post('/api/comment', updatedComment, (err, response) => {
+    APIManager.post('/api/comment', this.state.comment, (err, response) => {
 
       if (err) {
         alert('ERROR: ' + err)
         return
       }
 
-      console.log('COMMENT CREATED: ', + JSON.stringify(response))
+      console.log(JSON.stringify(response))
 
       let updatedList = Object.assign([], this.state.list)
       updatedList.push(response.result)
@@ -70,8 +64,6 @@ class Comments extends Component {
   }
 
   render() {
-    const formStyle = styles.form
-
     const commentList = this.state.list.map( (comment, i) => {
       return (
         <li key={i}><Comment currentComment={ comment } /></li>
@@ -87,23 +79,7 @@ class Comments extends Component {
 
         <hr className="mt-5 mb-5" />
 
-        <form style={formStyle.container}>
-          <h4 className="mb-4">Comment Form</h4>
-
-          <div className="form-group">
-            <label>Username</label>
-            <input onChange={this.updateComment.bind(this)} type="text" className="form-control" name="username" placeholder="Enter username" />
-          </div>
-
-          <div className="form-group">
-            <label>Enter comment</label>
-            <textarea onChange={this.updateComment.bind(this)} className="form-control" name="body" rows="3" placeholder="Enter comment"></textarea>
-          </div>
-
-          <button onClick={this.submitComment.bind(this)} className="btn btn-primary">Submit</button>
-
-          <input type="hidden" name="timestamp" />
-        </form>
+        <CommentForm />
       </div>
     )
   }

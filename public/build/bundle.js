@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,9 +71,9 @@
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(18);
-} else {
   module.exports = __webpack_require__(19);
+} else {
+  module.exports = __webpack_require__(20);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
@@ -565,6 +565,44 @@ module.exports = warning;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  universal: {},
+  form: {
+    container: {
+      backgroundColor: '#f7f7f9',
+      padding: 20,
+      marginBottom: 30
+    }
+  },
+  zone: {
+    container: {
+      padding: 15,
+      border: '1px solid #DDD',
+      marginTop: 20,
+      backgroundColor: '#F9F9F9'
+    },
+
+    zoneHeading: {
+      margin: 0
+    },
+
+    zoneTitleLink: {
+      textDecoration: 'none',
+      color: '#222'
+    }
+  }
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -577,7 +615,7 @@ module.exports = warning;
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(5);
   var warning = __webpack_require__(6);
-  var ReactPropTypesSecret = __webpack_require__(20);
+  var ReactPropTypesSecret = __webpack_require__(21);
   var loggedTypeFailures = {};
 }
 
@@ -628,7 +666,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -667,7 +705,7 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -748,7 +786,7 @@ module.exports = EventListener;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -790,7 +828,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -861,7 +899,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -876,7 +914,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(23);
+var isTextNode = __webpack_require__(24);
 
 /*eslint-disable no-bitwise */
 
@@ -904,7 +942,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -934,7 +972,7 @@ function focusNode(node) {
 module.exports = focusNode;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -943,18 +981,33 @@ module.exports = focusNode;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = {
-  form: {
-    container: {
-      backgroundColor: '#f7f7f9',
-      padding: 20,
-      marginBottom: 30
-    }
-  }
-};
+exports.Zone = exports.Comment = exports.AddZoneForm = exports.CommentForm = undefined;
+
+var _CommentForm = __webpack_require__(33);
+
+var _CommentForm2 = _interopRequireDefault(_CommentForm);
+
+var _AddZoneForm = __webpack_require__(34);
+
+var _AddZoneForm2 = _interopRequireDefault(_AddZoneForm);
+
+var _Comment = __webpack_require__(35);
+
+var _Comment2 = _interopRequireDefault(_Comment);
+
+var _Zone = __webpack_require__(36);
+
+var _Zone2 = _interopRequireDefault(_Zone);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.CommentForm = _CommentForm2.default;
+exports.AddZoneForm = _AddZoneForm2.default;
+exports.Comment = _Comment2.default;
+exports.Zone = _Zone2.default;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -965,7 +1018,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.APIManager = undefined;
 
-var _APIManager = __webpack_require__(34);
+var _APIManager = __webpack_require__(37);
 
 var _APIManager2 = _interopRequireDefault(_APIManager);
 
@@ -974,7 +1027,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.APIManager = _APIManager2.default;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -996,7 +1049,7 @@ module.exports = isObject;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1008,15 +1061,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(21);
+var _reactDom = __webpack_require__(22);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Home = __webpack_require__(30);
+var _Home = __webpack_require__(31);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _Nav = __webpack_require__(43);
+var _Nav = __webpack_require__(45);
 
 var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -1055,7 +1108,7 @@ var App = function (_Component) {
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('root'));
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1083,7 +1136,7 @@ isValidElement:K,version:"16.2.0",__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_F
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1109,7 +1162,7 @@ var emptyObject = __webpack_require__(4);
 var invariant = __webpack_require__(5);
 var warning = __webpack_require__(6);
 var emptyFunction = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(7);
+var checkPropTypes = __webpack_require__(8);
 
 // TODO: this is special because it gets imported during build.
 
@@ -2448,7 +2501,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2467,7 +2520,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2505,15 +2558,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(22);
+  module.exports = __webpack_require__(23);
 } else {
-  module.exports = __webpack_require__(25);
+  module.exports = __webpack_require__(26);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2529,7 +2582,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0),l=__webpack_require__(8),B=__webpack_require__(3),C=__webpack_require__(2),ba=__webpack_require__(9),da=__webpack_require__(10),ea=__webpack_require__(11),fa=__webpack_require__(12),ia=__webpack_require__(13),D=__webpack_require__(4);
+var aa=__webpack_require__(0),l=__webpack_require__(9),B=__webpack_require__(3),C=__webpack_require__(2),ba=__webpack_require__(10),da=__webpack_require__(11),ea=__webpack_require__(12),fa=__webpack_require__(13),ia=__webpack_require__(14),D=__webpack_require__(4);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -2749,7 +2802,7 @@ Z.injectIntoDevTools({findFiberByHostInstance:pb,bundleType:0,version:"16.2.0",r
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2764,7 +2817,7 @@ Z.injectIntoDevTools({findFiberByHostInstance:pb,bundleType:0,version:"16.2.0",r
  * @typechecks
  */
 
-var isNode = __webpack_require__(24);
+var isNode = __webpack_require__(25);
 
 /**
  * @param {*} object The object to check.
@@ -2777,7 +2830,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2805,7 +2858,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2829,18 +2882,18 @@ if (process.env.NODE_ENV !== "production") {
 var React = __webpack_require__(0);
 var invariant = __webpack_require__(5);
 var warning = __webpack_require__(6);
-var ExecutionEnvironment = __webpack_require__(8);
+var ExecutionEnvironment = __webpack_require__(9);
 var _assign = __webpack_require__(3);
 var emptyFunction = __webpack_require__(2);
-var EventListener = __webpack_require__(9);
-var getActiveElement = __webpack_require__(10);
-var shallowEqual = __webpack_require__(11);
-var containsNode = __webpack_require__(12);
-var focusNode = __webpack_require__(13);
+var EventListener = __webpack_require__(10);
+var getActiveElement = __webpack_require__(11);
+var shallowEqual = __webpack_require__(12);
+var containsNode = __webpack_require__(13);
+var focusNode = __webpack_require__(14);
 var emptyObject = __webpack_require__(4);
-var checkPropTypes = __webpack_require__(7);
-var hyphenateStyleName = __webpack_require__(26);
-var camelizeStyleName = __webpack_require__(28);
+var checkPropTypes = __webpack_require__(8);
+var hyphenateStyleName = __webpack_require__(27);
+var camelizeStyleName = __webpack_require__(29);
 
 /**
  * WARNING: DO NOT manually require this module.
@@ -18207,7 +18260,7 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18222,7 +18275,7 @@ module.exports = reactDom;
 
 
 
-var hyphenate = __webpack_require__(27);
+var hyphenate = __webpack_require__(28);
 
 var msPattern = /^ms-/;
 
@@ -18249,7 +18302,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18285,7 +18338,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18300,7 +18353,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(29);
+var camelize = __webpack_require__(30);
 
 var msPattern = /^-ms-/;
 
@@ -18328,7 +18381,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18363,7 +18416,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18379,11 +18432,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Zones = __webpack_require__(31);
+var _Zones = __webpack_require__(32);
 
 var _Zones2 = _interopRequireDefault(_Zones);
 
-var _Comments = __webpack_require__(41);
+var _Comments = __webpack_require__(44);
 
 var _Comments2 = _interopRequireDefault(_Comments);
 
@@ -18434,7 +18487,7 @@ var Home = function (_Component) {
 exports.default = Home;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18450,15 +18503,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Zone = __webpack_require__(32);
+var _presentation = __webpack_require__(15);
 
-var _Zone2 = _interopRequireDefault(_Zone);
-
-var _styles = __webpack_require__(14);
-
-var _styles2 = _interopRequireDefault(_styles);
-
-var _utils = __webpack_require__(15);
+var _utils = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18521,6 +18568,7 @@ var Zones = function (_Component) {
 
       e.preventDefault();
 
+      // pre-process our zone before sending to server
       var updatedZone = Object.assign({}, this.state.zone);
       updatedZone['zipCodes'] = updatedZone.zipCode.split(',');
 
@@ -18546,13 +18594,11 @@ var Zones = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var formStyle = _styles2.default.form;
-
       var listItems = this.state.list.map(function (zone, i) {
         return _react2.default.createElement(
           'li',
           { key: i },
-          _react2.default.createElement(_Zone2.default, { currentZone: zone })
+          _react2.default.createElement(_presentation.Zone, { currentZone: zone })
         );
       });
 
@@ -18564,30 +18610,7 @@ var Zones = function (_Component) {
           { className: 'list-unstyled' },
           listItems
         ),
-        _react2.default.createElement(
-          'form',
-          { style: formStyle.container },
-          _react2.default.createElement(
-            'h5',
-            { className: 'mb-4' },
-            'Add Zone Form'
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'form-group' },
-            _react2.default.createElement('input', { onChange: this.updateZone.bind(this), type: 'text', className: 'form-control form-control-sm', name: 'name', placeholder: 'Enter zone name' })
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'form-group' },
-            _react2.default.createElement('input', { onChange: this.updateZone.bind(this), type: 'text', className: 'form-control form-control-sm', name: 'zipCode', placeholder: 'Enter zone zip code' })
-          ),
-          _react2.default.createElement(
-            'button',
-            { onClick: this.addZone.bind(this), className: 'btn btn-secondary btn-sm' },
-            'Submit'
-          )
-        )
+        _react2.default.createElement(_presentation.AddZoneForm, null)
       );
     }
   }]);
@@ -18598,7 +18621,7 @@ var Zones = function (_Component) {
 exports.default = Zones;
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18614,7 +18637,284 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styles = __webpack_require__(33);
+var _styles = __webpack_require__(7);
+
+var _styles2 = _interopRequireDefault(_styles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CommentForm = function (_Component) {
+  _inherits(CommentForm, _Component);
+
+  function CommentForm() {
+    _classCallCheck(this, CommentForm);
+
+    var _this = _possibleConstructorReturn(this, (CommentForm.__proto__ || Object.getPrototypeOf(CommentForm)).call(this));
+
+    _this.state = {
+      comment: {
+        username: '',
+        body: ''
+      }
+    };
+    return _this;
+  }
+
+  _createClass(CommentForm, [{
+    key: 'updateComment',
+    value: function updateComment(e) {
+      console.log('Update zone: ' + e.target.name + ' == ' + e.target.value);
+
+      var updatedComment = Object.assign({}, this.state.comment);
+      updatedComment[e.target.name] = e.target.value;
+
+      this.setState({
+        comment: updatedComment
+      });
+    }
+  }, {
+    key: 'submitComment',
+    value: function submitComment(e) {
+      e.preventDefault();
+
+      console.log(JSON.stringify(this.state.comment));
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var formStyle = _styles2.default.form;
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'form',
+          { style: formStyle.container },
+          _react2.default.createElement(
+            'h4',
+            { className: 'mb-4' },
+            'Comment Form'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+              'label',
+              null,
+              'Username'
+            ),
+            _react2.default.createElement('input', { onChange: this.updateComment.bind(this), type: 'text', className: 'form-control', name: 'username', placeholder: 'Enter username' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+              'label',
+              null,
+              'Enter comment'
+            ),
+            _react2.default.createElement('textarea', { onChange: this.updateComment.bind(this), className: 'form-control', name: 'body', rows: '3', placeholder: 'Enter comment' })
+          ),
+          _react2.default.createElement(
+            'button',
+            { onClick: this.submitComment.bind(this), className: 'btn btn-primary' },
+            'Submit'
+          )
+        )
+      );
+    }
+  }]);
+
+  return CommentForm;
+}(_react.Component);
+
+exports.default = CommentForm;
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styles = __webpack_require__(7);
+
+var _styles2 = _interopRequireDefault(_styles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AddZoneForm = function (_Component) {
+  _inherits(AddZoneForm, _Component);
+
+  function AddZoneForm() {
+    _classCallCheck(this, AddZoneForm);
+
+    return _possibleConstructorReturn(this, (AddZoneForm.__proto__ || Object.getPrototypeOf(AddZoneForm)).apply(this, arguments));
+  }
+
+  _createClass(AddZoneForm, [{
+    key: 'render',
+    value: function render() {
+      var formStyle = _styles2.default.form;
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'form',
+          { style: formStyle.container },
+          _react2.default.createElement(
+            'h5',
+            { className: 'mb-4' },
+            'Add Zone Form'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement('input', { type: 'text', className: 'form-control form-control-sm', name: 'name', placeholder: 'Enter zone name' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement('input', { type: 'text', className: 'form-control form-control-sm', name: 'zipCode', placeholder: 'Enter zone zip code' })
+          ),
+          _react2.default.createElement(
+            'button',
+            { className: 'btn btn-secondary btn-sm' },
+            'Submit'
+          )
+        )
+      );
+    }
+  }]);
+
+  return AddZoneForm;
+}(_react.Component);
+
+exports.default = AddZoneForm;
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Comment = function (_Component) {
+  _inherits(Comment, _Component);
+
+  function Comment() {
+    _classCallCheck(this, Comment);
+
+    return _possibleConstructorReturn(this, (Comment.__proto__ || Object.getPrototypeOf(Comment)).apply(this, arguments));
+  }
+
+  _createClass(Comment, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "card mb-4" },
+        _react2.default.createElement(
+          "div",
+          { className: "card-body" },
+          _react2.default.createElement(
+            "p",
+            { className: "card-text" },
+            this.props.currentComment.body
+          ),
+          _react2.default.createElement(
+            "ul",
+            { className: "list-inline" },
+            _react2.default.createElement(
+              "li",
+              { className: "list-inline-item" },
+              _react2.default.createElement(
+                "strong",
+                null,
+                " ",
+                this.props.currentComment.username
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              { className: "list-inline-item font-weight-light" },
+              _react2.default.createElement(
+                "small",
+                null,
+                "Posted on ",
+                this.props.currentComment.timestamp
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Comment;
+}(_react.Component);
+
+exports.default = Comment;
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styles = __webpack_require__(7);
 
 var _styles2 = _interopRequireDefault(_styles);
 
@@ -18675,39 +18975,7 @@ var Zone = function (_Component) {
 exports.default = Zone;
 
 /***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
-  universal: {},
-
-  zone: {
-    container: {
-      padding: 15,
-      border: '1px solid #DDD',
-      marginTop: 20,
-      backgroundColor: '#F9F9F9'
-    },
-
-    zoneHeading: {
-      margin: 0
-    },
-
-    zoneTitleLink: {
-      textDecoration: 'none',
-      color: '#222'
-    }
-  }
-};
-
-/***/ }),
-/* 34 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18717,7 +18985,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _superagent = __webpack_require__(35);
+var _superagent = __webpack_require__(38);
 
 var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -18770,7 +19038,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 35 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -18787,11 +19055,11 @@ if (typeof window !== 'undefined') { // Browser window
   root = this;
 }
 
-var Emitter = __webpack_require__(36);
-var RequestBase = __webpack_require__(37);
-var isObject = __webpack_require__(16);
-var ResponseBase = __webpack_require__(38);
-var Agent = __webpack_require__(40);
+var Emitter = __webpack_require__(39);
+var RequestBase = __webpack_require__(40);
+var isObject = __webpack_require__(17);
+var ResponseBase = __webpack_require__(41);
+var Agent = __webpack_require__(43);
 
 /**
  * Noop.
@@ -19696,7 +19964,7 @@ request.put = function(url, data, fn) {
 
 
 /***/ }),
-/* 36 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -19865,7 +20133,7 @@ Emitter.prototype.hasListeners = function(event){
 
 
 /***/ }),
-/* 37 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19874,7 +20142,7 @@ Emitter.prototype.hasListeners = function(event){
 /**
  * Module of mixed-in functions shared between node and client code
  */
-var isObject = __webpack_require__(16);
+var isObject = __webpack_require__(17);
 
 /**
  * Expose `RequestBase`.
@@ -20566,7 +20834,7 @@ RequestBase.prototype._setTimeouts = function() {
 
 
 /***/ }),
-/* 38 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20576,7 +20844,7 @@ RequestBase.prototype._setTimeouts = function() {
  * Module dependencies.
  */
 
-var utils = __webpack_require__(39);
+var utils = __webpack_require__(42);
 
 /**
  * Expose `ResponseBase`.
@@ -20707,7 +20975,7 @@ ResponseBase.prototype._setStatusProperties = function(status){
 
 
 /***/ }),
-/* 39 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20785,7 +21053,7 @@ exports.cleanHeader = function(header, changesOrigin){
 
 
 /***/ }),
-/* 40 */
+/* 43 */
 /***/ (function(module, exports) {
 
 function Agent() {
@@ -20811,7 +21079,7 @@ module.exports = Agent;
 
 
 /***/ }),
-/* 41 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20827,15 +21095,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Comment = __webpack_require__(42);
+var _presentation = __webpack_require__(15);
 
-var _Comment2 = _interopRequireDefault(_Comment);
-
-var _styles = __webpack_require__(14);
-
-var _styles2 = _interopRequireDefault(_styles);
-
-var _utils = __webpack_require__(15);
+var _utils = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20856,8 +21118,7 @@ var Comments = function (_Component) {
     _this.state = {
       comment: {
         username: '',
-        body: '',
-        timestamp: ''
+        body: ''
       },
       list: []
     };
@@ -20889,18 +21150,14 @@ var Comments = function (_Component) {
       e.preventDefault();
       console.log('Submit comment: ' + JSON.stringify(this.state.comment));
 
-      var updatedComment = Object.assign({}, this.state.comment);
-
-      console.log(updatedComment);
-
-      _utils.APIManager.post('/api/comment', updatedComment, function (err, response) {
+      _utils.APIManager.post('/api/comment', this.state.comment, function (err, response) {
 
         if (err) {
           alert('ERROR: ' + err);
           return;
         }
 
-        console.log('COMMENT CREATED: ', +JSON.stringify(response));
+        console.log(JSON.stringify(response));
 
         var updatedList = Object.assign([], _this3.state.list);
         updatedList.push(response.result);
@@ -20925,13 +21182,11 @@ var Comments = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var formStyle = _styles2.default.form;
-
       var commentList = this.state.list.map(function (comment, i) {
         return _react2.default.createElement(
           'li',
           { key: i },
-          _react2.default.createElement(_Comment2.default, { currentComment: comment })
+          _react2.default.createElement(_presentation.Comment, { currentComment: comment })
         );
       });
 
@@ -20949,41 +21204,7 @@ var Comments = function (_Component) {
           commentList
         ),
         _react2.default.createElement('hr', { className: 'mt-5 mb-5' }),
-        _react2.default.createElement(
-          'form',
-          { style: formStyle.container },
-          _react2.default.createElement(
-            'h4',
-            { className: 'mb-4' },
-            'Comment Form'
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'form-group' },
-            _react2.default.createElement(
-              'label',
-              null,
-              'Username'
-            ),
-            _react2.default.createElement('input', { onChange: this.updateComment.bind(this), type: 'text', className: 'form-control', name: 'username', placeholder: 'Enter username' })
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'form-group' },
-            _react2.default.createElement(
-              'label',
-              null,
-              'Enter comment'
-            ),
-            _react2.default.createElement('textarea', { onChange: this.updateComment.bind(this), className: 'form-control', name: 'body', rows: '3', placeholder: 'Enter comment' })
-          ),
-          _react2.default.createElement(
-            'button',
-            { onClick: this.submitComment.bind(this), className: 'btn btn-primary' },
-            'Submit'
-          ),
-          _react2.default.createElement('input', { type: 'hidden', name: 'timestamp' })
-        )
+        _react2.default.createElement(_presentation.CommentForm, null)
       );
     }
   }]);
@@ -20994,89 +21215,7 @@ var Comments = function (_Component) {
 exports.default = Comments;
 
 /***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Comment = function (_Component) {
-  _inherits(Comment, _Component);
-
-  function Comment() {
-    _classCallCheck(this, Comment);
-
-    return _possibleConstructorReturn(this, (Comment.__proto__ || Object.getPrototypeOf(Comment)).apply(this, arguments));
-  }
-
-  _createClass(Comment, [{
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        { className: "card mb-4" },
-        _react2.default.createElement(
-          "div",
-          { className: "card-body" },
-          _react2.default.createElement(
-            "p",
-            { className: "card-text" },
-            this.props.currentComment.body
-          ),
-          _react2.default.createElement(
-            "ul",
-            { className: "list-inline" },
-            _react2.default.createElement(
-              "li",
-              { className: "list-inline-item" },
-              _react2.default.createElement(
-                "strong",
-                null,
-                " ",
-                this.props.currentComment.username
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              { className: "list-inline-item font-weight-light" },
-              _react2.default.createElement(
-                "small",
-                null,
-                "Posted on ",
-                this.props.currentComment.timestamp
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Comment;
-}(_react.Component);
-
-exports.default = Comment;
-
-/***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

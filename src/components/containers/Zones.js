@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Zone from '../presentation/Zone'
-import styles from './styles'
+import { Zone, AddZoneForm } from '../presentation/'
 import { APIManager } from '../../utils'
 
 class Zones extends Component {
@@ -45,6 +44,7 @@ class Zones extends Component {
   addZone(e) {
     e.preventDefault()
 
+    // pre-process our zone before sending to server
     let updatedZone = Object.assign({}, this.state.zone)
     updatedZone['zipCodes'] = updatedZone.zipCode.split(',')
 
@@ -69,8 +69,6 @@ class Zones extends Component {
   }
 
   render() {
-    const formStyle = styles.form
-
     const listItems = this.state.list.map( (zone, i) => {
       return (
         <li key={i}><Zone currentZone={ zone } /></li>
@@ -83,19 +81,7 @@ class Zones extends Component {
           { listItems }
         </ul>
 
-        <form style={formStyle.container}>
-          <h5 className="mb-4">Add Zone Form</h5>
-
-          <div className="form-group">
-            <input onChange={this.updateZone.bind(this)} type="text" className="form-control form-control-sm" name="name" placeholder="Enter zone name" />
-          </div>
-
-          <div className="form-group">
-            <input onChange={this.updateZone.bind(this)} type="text" className="form-control form-control-sm" name="zipCode" placeholder="Enter zone zip code" />
-          </div>
-
-          <button onClick={this.addZone.bind(this)} className="btn btn-secondary btn-sm">Submit</button>
-        </form>
+        <AddZoneForm />
       </div>
     )
   }
